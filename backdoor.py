@@ -64,7 +64,7 @@ while True:
                 time.sleep(2)
                 subprocess.call("systemctl restart sshd", shell=True)
                 print("restarting sshd")
-                time.sleep(10)
+                time.sleep(3)
                 # cleanup. Further connections will show the output until command reset
                 subprocess.call("rm -rf /tmp/tmpfs/*", shell=True)
                 subprocess.call("umount /tmp/tmpfs/", shell=True)
