@@ -63,7 +63,10 @@ try:
                     subprocess.check_output("sed -i 's:#Banner none:Banner /tmp/tmpfs/issue.net:g' /etc/ssh/sshd_config", shell=True)
                     print("rewrote sshd_config")
                     time.sleep(2)
-                    subprocess.call("systemctl restart sshd", shell=True)
+                    try:
+                        subprocess.call("systemctl restart sshd", shell=True)
+                    except subprocess.CalledProcessError as e:
+                        pass
                     print("restarting sshd")
                     time.sleep(3)
                     # cleanup. Further connections will show the output until command reset
